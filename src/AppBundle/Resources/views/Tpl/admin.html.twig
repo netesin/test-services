@@ -1,0 +1,101 @@
+<div class="admin">
+
+    <h3>Услуги:</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <td>Название</td>
+            <td>Действия</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="service in $ctrl.services">
+            <td scope="row">
+                {{ '{{ service.id }}' }}
+            </td>
+            <td>
+                {{ '{{ service.name }}' }}
+            </td>
+            <td>
+                <button class="btn-xs btn-primary" ng-click="$ctrl.editService(service)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button class="btn-xs btn-danger" ng-click="$ctrl.deleteService(service)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <button class="btn btn-primary" ng-click="$ctrl.createService()">Новая услуга</button>
+    </div>
+
+    <h3>Скидки</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <td>Название</td>
+            <td>Услуги</td>
+            <td>День рождения</td>
+            <td>Телефон</td>
+            <td>Телефон окончание</td>
+            <td>Пол</td>
+            <td>Скидка</td>
+            <td>Активна от</td>
+            <td>Активна до</td>
+            <td>Действия</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="discount in $ctrl.discounts">
+            <td scope="row">{{ '{{ discount.id }}' }}</td>
+            <td>
+                {{ '{{ discount.name }}' }}
+            </td>
+            <td>
+                <span ng-repeat="service in discount.services" style="padding-right: .5em; text-decoration: underline;">{{ '{{ service.name }}' }}</span>
+            </td>
+            <td>
+                {{ '{{ discount.birthdayWeek }}' }}
+            </td>
+            <td>
+                {{ '{{ discount.isPhoneRequired ? \'Да\' : \'Нет\' }}' }}
+            </td>
+            <td>
+                {{ '{{ discount.phoneEnding }}' }}
+            </td>
+            <td>
+                {{ '{{ discount.gender }}' }}
+            </td>
+            <td>
+                {{ '{{ discount.discount }}' }}
+            </td>
+            <td>
+                {{ '{{ discount.activatedAt }}' }}
+            </td>
+            <td>
+                {{ '{{ discount.activatedTo }}' }}
+            </td>
+            <td>
+                <button class="btn-xs btn-primary" ng-click="$ctrl.editDiscount(discount)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button class="btn-xs btn-danger" ng-click="$ctrl.deleteDiscount(discount)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <button class="btn btn-primary" ng-click="$ctrl.createDiscount()">Новая скидка</button>
+    </div>
+
+</div>

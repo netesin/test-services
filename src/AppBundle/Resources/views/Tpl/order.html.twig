@@ -1,0 +1,73 @@
+<div class="order">
+
+    <h3>Заказ:</h3>
+
+    <form name="form">
+
+        <div class="form-group" ng-class="{ 'has-error' : form.fio.$invalid }">
+            <label>ФИО:</label>
+            <input type="text" name="fio" class="form-control" ng-model="$ctrl.order.fio" required>
+            <div ng-messages="form.fio.$error" class="help-block">
+                <div ng-message="required">Укажите Фамилию Имя Отчество</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Услуги:</label>
+            <div class="checkbox" ng-repeat="service in $ctrl.services">
+                <label>
+                    <input type="checkbox" ng-model="$ctrl.order.services[service.id]" value="service">{{ '{{ service.name }}' }}
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : form.birthday.$invalid }">
+            <label>День рождения:</label>
+            <p class="input-group">
+                <input name="birthday"
+                       type="text"
+                       class="form-control"
+                       uib-datepicker-popup="{{ '{{ $ctrl.dateFormat }}' }}"
+                       is-open="$ctrl.isOpenDatepicker"
+                       datepicker-options="$ctrl.dateOptions"
+                       ng-model="$ctrl.order.birthday"
+                       required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="$ctrl.openDatepicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+            <div ng-messages="form.birthday.$error" class="help-block">
+                <div ng-message="required">Укажите день рождения</div>
+                <div ng-message="date">Укажите дату в формате YYYY-MM-DD</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input id="phone" type="number" name="phone" maxlength="20" class="form-control" ng-model="$ctrl.order.phone">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Пол:</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" ng-model="$ctrl.order.gender" value="m" checked>
+                    Мужской
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" ng-model="$ctrl.order.gender" value="f">
+                    Женский
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="$ctrl.getDiscount()">Расчитать</button>
+            <button class="btn btn-danger" ng-click="$ctrl.order = {}">Сбросить</button>
+        </div>
+
+    </form>
+
+</div>

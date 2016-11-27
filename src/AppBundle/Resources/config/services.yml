@@ -1,0 +1,17 @@
+parameters:
+
+services:
+
+    # Not found listener
+    web.listener:
+        class: AppBundle\Listener\NotFoundListener
+        calls:
+            - [setContainer, ['@service_container']]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 2048 }
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+
+    # Discount manager
+    discount.manager:
+        class: AppBundle\Services\Discount\Manager
+        arguments: ['@doctrine.orm.entity_manager']

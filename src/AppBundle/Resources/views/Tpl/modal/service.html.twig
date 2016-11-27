@@ -1,0 +1,28 @@
+<div class="modal-content">
+
+    <div class="modal-header">
+        <h4 class="modal-title">Услуга</h4>
+    </div>
+
+    <div class="modal-body">
+
+        <form name="form">
+
+            <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid }">
+                <label>Название услуги:</label>
+                <input type="text" name="name" class="form-control" ng-model="$ctrl.service.name" required>
+                <div ng-messages="form.name.$error" class="help-block">
+                    <div ng-message="required">Введите название услуги</div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="modal-footer">
+        <button ng-click="$dismiss()" type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+        <button ng-click="$close($ctrl.service)" type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Сохранить</button>
+    </div>
+
+</div>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="fragment" content="!">
+    <base href="/">
+    <title>Скидка на заявку</title>
+
+    {% block head %}
+        <style>
+            {{ include('@App/index.css.twig') }}
+        </style>
+    {% endblock %}
+
+    <link rel="stylesheet" href="{{ asset("bundles/app/lib/bootstrap/css/bootstrap.css") }}">
+    <link rel="stylesheet" href="{{ asset("bundles/app/lib/bootstrap/css/bootstrap-theme.css") }}">
+    <link rel="stylesheet" href="{{ asset("bundles/app/lib/angular-ui-bootstrap/ui-bootstrap-csp.css") }}">
+
+</head>
+
+<body>
+
+<div class="loader" id="loader">
+    <div class="text">
+        <i class="glyphicon glyphicon-refresh"></i>
+        Loading, please wait...
+    </div>
+</div>
+
+<div id="main" class="main" style="display: none">
+
+    <div class="menu">
+        <a ui-sref="order" ui-sref-active="active">Оформить заказ</a>
+        <a ui-sref="admin" ui-sref-active="active">Админ</a>
+    </div>
+
+    <main ui-view="main"></main>
+
+    {#<div class="admin">#}
+    {#<a>Админ</a>#}
+    {#</div>#}
+
+    {#<h3>Оформить заказ</h3>#}
+
+    {#<div class="form-group">#}
+    {#<label for="fio">ФИО</label>#}
+    {#<input id="fio" type="text" name="fio" class="form-control" ng-model="$ctrl.order.fio" required>#}
+    {#</div>#}
+
+    {#<div class="form-group">#}
+    {#<label>Услуги</label>#}
+    {#</div>#}
+
+    {#<div class="form-group">#}
+    {#<label for="birthday">Дата рождения</label>#}
+    {#<p class="input-group">#}
+    {#<input id="birthday"#}
+    {#type="text"#}
+    {#class="form-control"#}
+    {#uib-datepicker-popup="{{ '{{ $ctrl.dateFormat }}' }}"#}
+    {#is-open="$ctrl.isOpenDatepicker"#}
+    {#datepicker-options="$ctrl.dateOptions"#}
+    {#ng-model="$ctrl.order.birthday"#}
+    {#ng-required="true"/>#}
+    {#<span class="input-group-btn">#}
+    {#<button type="button" class="btn btn-default" ng-click="$ctrl.openDatepicker()"><i class="glyphicon glyphicon-calendar"></i></button>#}
+    {#</span>#}
+    {#</p>#}
+    {#</div>#}
+
+    {#<div class="form-group">#}
+    {#<label for="phone">Телефон</label>#}
+    {#<input id="phone" type="number" name="phone" maxlength="20" class="form-control">#}
+    {#</div>#}
+
+    {#<div class="form-group">#}
+    {#<label for="phone">Пол</label>#}
+    {#<div class="radio">#}
+    {#<label>#}
+    {#<input type="radio" name="gender" ng-model="$ctrl.order.gender" value="m" checked>#}
+    {#Мужской#}
+    {#</label>#}
+    {#</div>#}
+    {#<div class="radio">#}
+    {#<label>#}
+    {#<input type="radio" name="gender" ng-model="$ctrl.order.gender" value="f">#}
+    {#Женский#}
+    {#</label>#}
+    {#</div>#}
+    {#</div>#}
+
+    {#<div>#}
+    {#<button class="btn btn-primary">Расчитать</button>#}
+    {#<button class="btn btn-danger">Сбросить</button>#}
+    {#</div>#}
+
+</div>
+
+<script src="{{ asset('bundles/app/lib/requirejs/requirejs.js') }}" data-main="bundles/app/js/config.js"></script>
+</body>
+</html>
